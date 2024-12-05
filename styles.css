@@ -1,17 +1,13 @@
-/* Kehon tyylit */
-body {
-    background: #ff08c96d; /* Taustaväri: purppuraksi */
-    background-image: url('tausta.png'); /* Taustakuvaksi tausta.png */
-    background-size: 1000px 700px; /* Aseta kuvan koko kiinteäksi (1000x700) */
-    background-position: center; /* Keskittää kuvan ruudun keskelle */
-    background-repeat: no-repeat; /* Estää kuvan toistamisen */
-    margin: 0; /* Poistaa oletusmarginaalit */
-    height: 100vh; /* Koko näytön korkeus */
-    display: flex; /* Keskittää sisällön pystysuunnassa */
-    justify-content: center; /* Keskittää sisällön vaakasuunnassa */
-    align-items: center;
-    font-family: Arial, sans-serif; /* Fontin asetus */
-}
+/* Kehon tyylit */ body { background: #ff08c96d; /* Taustaväri: purppuraksi */
+     background-image: url('tausta.png'); /* Taustakuvaksi tausta.png */
+     background-size: 1000px 700px; /* Aseta kuvan koko kiinteäksi (1000x700) */ 
+     background-position: center; /* Keskittää kuvan ruudun keskelle */ 
+     background-repeat: no-repeat; /* Estää kuvan toistamisen */ 
+     margin: 0; /* Poistaa oletusmarginaalit */ 
+     height: 100vh; /* Koko näytön korkeus */ 
+     display: flex; /* Keskittää sisällön pystysuunnassa */ 
+     justify-content: center; /* Keskittää sisällön vaakasuunnassa */ 
+     align-items: center; font-family: Arial, sans-serif; /* Fontin asetus */ }
 
 /* Pelin pääkontaineri */
 .game-container {
@@ -21,6 +17,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hienovarainen varjo */
     position: relative;
+    width: 90%; /* Leveys mukautuu ruudun kokoon */
+    max-width: 600px; /* Maksimileveys suuremmilla näytöillä */
 }
 
 h1 {
@@ -28,9 +26,9 @@ h1 {
 }
 
 .choices img {
-    width: 150px;
+    width: 100px; /* Vähennetään kokoa mobiilinäytöille */
     cursor: pointer;
-    margin: 0 15px;
+    margin: 0 10px;
     transition: transform 0.2s;
 }
 
@@ -39,7 +37,7 @@ h1 {
 }
 
 .result {
-    margin-top: 100px;
+    margin-top: 50px; /* Pienennetään marginaalia mobiilinäytöille */
 }
 
 #result-text {
@@ -67,15 +65,15 @@ h1 {
 .scores {
     display: flex;
     justify-content: space-between;
-    margin-top: 30px;
+    margin-top: 20px; /* Pienennetään marginaalia mobiilinäytöille */
 }
 
 .scores div {
-    width: 50%;
+    width: 45%;
 }
 
 .scores span {
-    font-size: 2em;
+    font-size: 1.5em; /* Pienennetään fonttikokoa mobiilinäytöille */
     color: #000000;
     transition: transform 0.5s ease;
 }
@@ -94,10 +92,9 @@ h1 {
     background-color: #ff5c5c;
 }
 
-/* Taistelu animaatiokontaineri */
 #fight-container {
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
@@ -107,26 +104,21 @@ h1 {
     align-items: center;
 }
 
-/* Taistelu kuvat */
 #fight-container img {
     width: 50px;
-    position: relative;
+    position: absolute;
 }
 
-/* Animaatio taistelun aikana */
-@keyframes fightAnimationRight {
-    0% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    50% {
-        transform: translateX(50px);
-        opacity: 0.5;
-    }
-    100% {
-        transform: translateX(100px);
-        opacity: 0;
-    }
+.fight-animation-left {
+    animation: fightAnimationLeft 1s ease-in-out;
+}
+
+.fight-animation-right {
+    animation: fightAnimationRight 1s ease-in-out;
+}
+
+.fight-animation-center {
+    animation: fightAnimationCenter 1s ease-in-out;
 }
 
 @keyframes fightAnimationLeft {
@@ -140,6 +132,21 @@ h1 {
     }
     100% {
         transform: translateX(-100px);
+        opacity: 0;
+    }
+}
+
+@keyframes fightAnimationRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(50px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(100px);
         opacity: 0;
     }
 }
@@ -159,7 +166,6 @@ h1 {
     }
 }
 
-/* Explosion efekti */
 .explosion {
     animation: explode 1s ease-in-out;
 }
@@ -179,15 +185,18 @@ h1 {
     }
 }
 
-/* Voittajan puolelle liikkuva animaatio */
-.fight-animation-voitit {
-    animation: fightAnimationRight 1s ease-in-out;
-}
+/* Media Query: Mobiililaitteet */
+@media (max-width: 600px) {
+    .choices img {
+        width: 80px;
+        margin: 0 5px;
+    }
 
-.fight-animation-tietokone-voitti {
-    animation: fightAnimationLeft 1s ease-in-out;
-}
+    .result {
+        margin-top: 30px;
+    }
 
-.fight-animation-tasapeli {
-    animation: fightAnimationCenter 1s ease-in-out;
+    .scores span {
+        font-size: 1.2em;
+    }
 }
