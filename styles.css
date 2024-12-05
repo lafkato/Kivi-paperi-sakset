@@ -1,0 +1,193 @@
+/* Kehon tyylit */
+body {
+    background: #ff08c96d; /* Taustaväri: purppuraksi */
+    background-image: url('tausta.png'); /* Taustakuvaksi tausta.png */
+    background-size: 1000px 700px; /* Aseta kuvan koko kiinteäksi (1000x700) */
+    background-position: center; /* Keskittää kuvan ruudun keskelle */
+    background-repeat: no-repeat; /* Estää kuvan toistamisen */
+    margin: 0; /* Poistaa oletusmarginaalit */
+    height: 100vh; /* Koko näytön korkeus */
+    display: flex; /* Keskittää sisällön pystysuunnassa */
+    justify-content: center; /* Keskittää sisällön vaakasuunnassa */
+    align-items: center;
+    font-family: Arial, sans-serif; /* Fontin asetus */
+}
+
+/* Pelin pääkontaineri */
+.game-container {
+    text-align: center;
+    background: rgba(228, 228, 228, 0.641); /* Läpikuultava valkoinen laatikko */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hienovarainen varjo */
+    position: relative;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.choices img {
+    width: 150px;
+    cursor: pointer;
+    margin: 0 15px;
+    transition: transform 0.2s;
+}
+
+.choices img:hover {
+    transform: scale(1.1);
+}
+
+.result {
+    margin-top: 100px;
+}
+
+#result-text {
+    transition: all 0.5s ease;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+#result-text.tasapeli {
+    background-color: #f1c40f;
+    color: #fff;
+}
+
+#result-text.voitit {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+#result-text.tietokone-voitti {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.scores div {
+    width: 50%;
+}
+
+.scores span {
+    font-size: 2em;
+    color: #000000;
+    transition: transform 0.5s ease;
+}
+
+#reset-btn {
+    background-color: #ff0000;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 20px;
+}
+
+#reset-btn:hover {
+    background-color: #ff5c5c;
+}
+
+/* Taistelu animaatiokontaineri */
+#fight-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Taistelu kuvat */
+#fight-container img {
+    width: 50px;
+    position: relative;
+}
+
+/* Animaatio taistelun aikana */
+@keyframes fightAnimationRight {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(50px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+}
+
+@keyframes fightAnimationLeft {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50px);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+}
+
+@keyframes fightAnimationCenter {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Explosion efekti */
+.explosion {
+    animation: explode 1s ease-in-out;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Voittajan puolelle liikkuva animaatio */
+.fight-animation-voitit {
+    animation: fightAnimationRight 1s ease-in-out;
+}
+
+.fight-animation-tietokone-voitti {
+    animation: fightAnimationLeft 1s ease-in-out;
+}
+
+.fight-animation-tasapeli {
+    animation: fightAnimationCenter 1s ease-in-out;
+}

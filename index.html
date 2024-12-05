@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kivi, Paperi, Sakset</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Kivi, Paperi, Sakset</h1>
+        <div class="choices">
+            <img src="kivi.png" id="kivi" alt="Kivi">
+            <img src="paperi.png" id="paperi" alt="Paperi">
+            <img src="sakset.png" id="sakset" alt="Sakset">
+        </div>
+        <div class="result">
+            <h2 id="result-text">Valitse kivi, paperi tai sakset aloittaaksesi pelin.</h2>
+        </div>
+        <div class="scores">
+            <div class="user-score">
+                <h3>Sinä</h3>
+                <span id="user-score">0</span>
+            </div>
+            <div class="computer-score">
+                <h3>Tietokone</h3>
+                <span id="computer-score">0</span>
+            </div>
+        </div>
+        <button id="reset-btn">Nollaa tulokset</button>
+        <div id="fight-container"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
